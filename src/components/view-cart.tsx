@@ -8,7 +8,7 @@ const ViewCart = () => {
   const { items, removeFromCart } = useCart();
   const products = useProductsQuery();
   return (
-    <div className="flex flex-col w-96 h-fit  bg-white rounded-lg p-6 gap-2">
+    <div className="flex flex-col w-fit md:w-96 h-fit  bg-white rounded-lg p-6 gap-2">
       <p className="font-medium text-2xl text-[#C66C50]">
         Your Cart {"(" + items.length.toString() + ")"}
       </p>

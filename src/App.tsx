@@ -7,12 +7,14 @@ function App() {
       <div className="flex flex-row w-fit gap-4 p-10">
         <div className="flex flex-col gap-y-7">
           <p className="text-4xl font-bold">Desserts</p>
+          <div className="md:hidden">
+            <ViewCart />
+          </div>
           <Catalogue />
         </div>
-        <div className="hidden md:block"> 
+        <div className="hidden md:block">
           <ViewCart />
         </div>
-        
       </div>
     </div>
   );

@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# Oolio Webapp Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live demo (Cloudflare Pages):
+https://oolio-webapp-challenge.pages.dev/
 
-Currently, two official plugins are available:
+This repository contains my solution for the Oolio webapp challenge, built with React, TypeScript, and Vite. It implements a small product catalog with a cart experience, API data fetching, and a clean component structure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a two-part challenge:
+- Part 1 (this repo): Frontend webapp.
+- Part 2: Backend API, deployed for the live demo at https://oolio.fly.dev/api.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Product list fetched via React Query
+- Simple cart powered by Zustand (add, remove, clear; persisted to localStorage)
+- Reusable UI primitives (Button) and icons
+- Type-safe code with TypeScript
+- Vite dev server and optimized production build
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Tech Stack
+
+- React 19, TypeScript, Vite
+- @tanstack/react-query for data fetching/caching
+- Zustand for client-side state (cart)
+- Tailwind CSS 4 for styling utilities
+- Axios for HTTP client
+
+## Project Structure
+
+- `src/services/api-client.ts` – Axios instance (reads `VITE_API_ENDPOINT`)
+- `src/hooks/use-products.ts` – Products query hook (React Query)
+- `src/hooks/use-cart.ts` – Cart store (Zustand)
+- `src/components/` – UI components and icons
+- `public/` – Static assets (e.g., `cake.svg`)
+
+## Getting Started
+
+Prerequisites: Node.js 18+ and npm.
+
+Install dependencies and run the dev server:
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Using pnpm (optional):
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+pnpm install
+pnpm dev
 ```
+
+Open http://localhost:5173 in your browser.
+
+## Environment
+
+Create a `.env` file (or `.env.local`) if you need a custom API endpoint:
+
+```
+VITE_API_ENDPOINT=https://your-api.example.com
+```
+
+Live demo is configured to use:
+
+```
+VITE_API_ENDPOINT=https://oolio.fly.dev/api
+```
+
+## Build & Preview
+
+```bash
+npm run build
+npm run preview
+```
+
+## Notes for Reviewers
+
+- The live deployment is linked at the top for quick verification.
+- Cart state lives in `use-cart.ts` and persists to localStorage.
+- Components and hooks are organized for clarity and ease of extension.
+
+## License
+
+This project is provided as part of a coding challenge.

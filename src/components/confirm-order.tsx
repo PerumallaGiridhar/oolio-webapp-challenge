@@ -20,7 +20,7 @@ const ConfirmOrder = () => {
           <p className="text-[#E7AB91]">Confirm Order</p>
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="h-fit bg-white">
         <DialogHeader>
           <div className="flex flex-col gap-4">
             <IconCircleCheck className="size-10 text-green-600" />
@@ -30,7 +30,7 @@ const ConfirmOrder = () => {
             We hope you enjoy your food!
           </p>
         </DialogHeader>
-        <div className="flex flex-col p-4 gap-2 bg-[#FCF8F5] rounded">
+        <div className="flex flex-col p-4 gap-2 bg-[#FCF8F5] not-only:rounded overflow-auto">
           {items.map((item) => {
             return (
               <div className="flex py-2 justify-between border-b border-b-[#F3F3F3]">
@@ -75,7 +75,9 @@ const ConfirmOrder = () => {
               </div>
             );
           })}
-          <div className="flex justify-between items-center py-4">
+          
+        </div>
+        <div className="flex justify-between items-center py-4">
             <p className="text-[#928D8B] font-medium text-xs">Order Total</p>
             <p className="font-medium text-xl">
               {new Intl.NumberFormat("en-US", {
@@ -93,7 +95,6 @@ const ConfirmOrder = () => {
               )}
             </p>
           </div>
-        </div>
         <DialogClose>
           <Button
             className="bg-[#C73B0E] hover:bg-[#C73B0E] rounded-3xl w-full h-13"
